@@ -1,0 +1,23 @@
+name: InstaBox 免费测试
+
+# 这里的配置意思是：当你点击“手动触发”或者往仓库推送代码时，开始运行
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  my-first-test:
+    # 🌟 关键：指定使用你的 InstaBox 免费 4核8G 机器运行
+    runs-on: instabox-medium
+
+    steps:
+      - name: 步骤1：检查并下载我的代码
+        uses: actions/checkout@v4
+
+      - name: 步骤2：让虚拟机对你打个招呼
+        run: |
+          echo "你好！我是 InstaBox 虚拟机。"
+          echo "我的系统配置是："
+          uname -a
+          echo "我已经成功运行了你保存的输出命令！"
